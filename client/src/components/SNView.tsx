@@ -707,6 +707,7 @@ const SNView: React.FC<Props> = ({xml, forcedWidth, editMode = '', editCallback 
             }
 
             return <g onClick={callback} key={i}>
+                // stuart-change 3/13/2020
                 <text x={x} y={y} fontSize={14} textAnchor="middle" alignmentBaseline="middle">{note.fingering}</text>
                 {notehead}
             </g>;
