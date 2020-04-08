@@ -503,6 +503,9 @@ const SNView: React.FC<Props> = ({xml, forcedWidth, editMode = '', editCallback 
                     if (!direction.pedal) return;
                     let pedalText = direction.pedal === 'start' ? '𝒫𝑒𝒹.' : '✻';
                     let x = measureNumberToPos(measureNumber) + noteTimeToPos(direction.time, 'treble').x;
+                    // When the start and stop symbols occur at the same point, the symbols will display as overlapping.
+                    // To correct this, the end symbol is backed up 2/3 the width of a note symbol.  stuart-change 4/8/20
+                    if (direction.pedal === 'end') { x = x - (2 * noteSymbolSize) / 3 };
                     pedals.push(
                         <text x={`${x}`} y={noteSymbolSize} key={key++} fontSize={noteSymbolSize} fontWeight='bold'>
                             {pedalText}
