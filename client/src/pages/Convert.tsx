@@ -207,7 +207,7 @@ const Convert: React.FC<Props> = () => {
                     </div>
                 </>}
                 <div id="close" style={styles.sideBarTopOptions} onClick={() => {setShow(false);}}>
-                    Close ✕
+                    ✕
                 </div>
             </div>
 
@@ -220,6 +220,13 @@ const Convert: React.FC<Props> = () => {
                         </div>
 
                     </Expandable>
+                                      
+                    
+                        
+                        _________________________________________________
+                      Changes are made to the converted WYSIWYP file. To save in MusicXML format, select Export after editing. 
+                    
+
                 </Fragment>:<Fragment key="preferences">
 
                     <Expandable title="Staff Appearance">
@@ -268,7 +275,7 @@ const Convert: React.FC<Props> = () => {
                     <Expandable title="Note Appearance">
 
                         <div style={styles.line}>
-                            <div style={styles.name}>Accidental Type</div>
+                            <div style={styles.name}>Accidental Display</div>
                             <select value={preferences.accidentalType} onChange={
                                 (e) => {setPreferences({type: 'set', val: {accidentalType: e.target.value as any}});}
                             }>{accidentalTypeOptions.map(x => <option key={x}>{x}</option>)}</select>

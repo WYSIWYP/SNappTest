@@ -30,7 +30,7 @@ export type clefPreferenceOptions = (typeof clefPreferenceOptions)[number];
 export const measuresPerRowOptions = [1, 2, 3, 4, 5, 6] as const; // TODO: Consider using a slider
 export type measuresPerRowOption = (typeof measuresPerRowOptions)[number];
 
-export const accidentalTypeOptions = ['auto', 'sharp', 'flat'] as const;
+export const accidentalTypeOptions = ['auto', 'sharps', 'flats'] as const;
 export type accidentalTypeOption = (typeof accidentalTypeOptions)[number];
 
 export type state = {

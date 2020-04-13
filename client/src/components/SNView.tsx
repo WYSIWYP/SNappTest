@@ -168,7 +168,7 @@ const SNView: React.FC<Props> = ({xml, forcedWidth, editMode = '', editCallback 
 
             // if note is flat, we need to bring it a line higher.
             if (accidentalType === 'auto' && getNoteAccidental(note) < 0) line++;
-            else if (accidentalType === 'flat' && getNoteAccidental(note) !== 0) line++; // handle user override
+            else if (accidentalType === 'flats' && getNoteAccidental(note) !== 0) line++; // handle user override
 
             return line;
         };
@@ -646,7 +646,7 @@ const SNView: React.FC<Props> = ({xml, forcedWidth, editMode = '', editCallback 
             let strokeWidth = noteSymbolSize / 8;
             let crossCircleWidth = noteSymbolSize / 2 / Math.sqrt(2);
 
-            let autoNoteShape = accidentalType === 'sharp' ? sharpNoteShape : flatNoteShape;
+            let autoNoteShape = accidentalType === 'sharps' ? sharpNoteShape : flatNoteShape;
             let shape = {
                 [Accidental.Natural]: naturalNoteShape,
                 [Accidental.Flat]: accidentalType === 'auto' ? flatNoteShape : autoNoteShape,
