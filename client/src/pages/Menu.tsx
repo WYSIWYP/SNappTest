@@ -42,7 +42,7 @@ const Menu: React.FC<Props> = () => {
      };
 
     let deleteAllPrompt = () => {
-        setDialogState(Dialog.showPrompt('Delete Confirmation', 'Are you sure you want to delete all WYSIWYP files?', 'Cancel', () => {
+        setDialogState(Dialog.showPrompt('Delete Confirmation', 'Are you sure you want to delete all converted files?', 'Cancel', () => {
             setDialogState(Dialog.close());
         }, 'Delete', () => {
             recentFiles.forEach(x=>{
@@ -54,7 +54,7 @@ const Menu: React.FC<Props> = () => {
         }));
     };
     let deleteSinglePrompt = (x: recentFile) => {
-        setDialogState(Dialog.showPrompt('Delete Confirmation', 'Are you sure you want to delete this WYSIWYP file?', 'Cancel', () => {
+        setDialogState(Dialog.showPrompt('Delete Confirmation', 'Are you sure you want to delete this converted file?', 'Cancel', () => {
             setDialogState(Dialog.close());
         }, 'Delete', () => {
             let newRecentFiles = recentFiles.filter(y => y.id !== x.id);
@@ -302,7 +302,7 @@ const Menu: React.FC<Props> = () => {
                     <div style={{ ...styles.item, flex: '.35 0 auto' }} />
                 </> : <>
                         <div style={{ ...styles.item, flex: '.36 0 auto' }} />
-                        <div style={{ ...styles.item, fontSize: '28px', fontWeight: 'bolder' }}>WYSIWYP format files already converted from MusicXML</div>
+                        <div style={{ ...styles.item, fontSize: '28px', fontWeight: 'bolder' }}>files already converted from MusicXML</div>
                         <div style={{ ...styles.item, flex: '.08 0 auto' }} />
                         <div style={{ ...styles.item, ...styles.recentFiles }}>
                             <div style={{ ...styles.recentFilesInner }}>
@@ -327,10 +327,8 @@ const Menu: React.FC<Props> = () => {
                         <div style={{ ...styles.item, flex: '.24 0 auto' }} />
                     </>}
                 <div style={styles.item}>
-                    <span id="button-upload" style={styles.link}>
-                        <img src={svg} style={styles.icon} alt="" />
-                        Convert a MusicXML File
-                        <input style={styles.fileInput} type="file" title="Convert a MusicXML file" accept=".musicxml,.mxl,.xml" onChange={(e) => { uploadFile(e); }}></input>
+                    <span id="button-upload" style={styles.link}>                        Convert another MusicXML File
+                        <input style={styles.fileInput} type="file" title="Convert another MusicXML file" accept=".musicxml,.mxl,.xml" onChange={(e) => { uploadFile(e); }}></input>
                     </span>
                 </div>
                 {installHandle===undefined?null:<>
@@ -383,7 +381,7 @@ const styleMap = {
         width: '340px',
         height: '100%',
         cursor: 'pointer',
-        opacity: 0,
+        opacity: 0
     },
     recentFiles: {
         color: '#31B7D6',
