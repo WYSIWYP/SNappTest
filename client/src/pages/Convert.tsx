@@ -166,7 +166,7 @@ const Convert: React.FC<Props> = () => {
     };
     let exportWork = () => {
         // 2020 june 28 add 2nd (boolean) parameter so that a part-wise file format is created instead of time-wise
-        let file = new Blob([MusicXML.serializeScore(currentFile.data!), true], {type: 'text/plain'});
+        let file = new Blob([MusicXML.serializeScore(currentFile.data!, true)], {type: 'text/plain'});
         saveAs(file, `${currentFile.file_name}.musicxml`, {
             autoBom: false,
         });
