@@ -140,11 +140,11 @@ const SNView: React.FC<Props> = ({ xml, forcedWidth, editMode = '', editCallback
             accidentalType
         } = preferences;
 
-        // Map preference strings to numeric values
+        // Map preference strings to numeric values     2021 06 10 - change from 15, 20, 25
         let noteScaleMap: Record<scalePreferenceOption, number> = {
-            small: 15,
-            medium: 20,
-            large: 25
+            small: 9,
+            medium: 15,
+            large: 22
         };
         let staffScaleMap: Record<scalePreferenceOption, number> = {
             small: 18,
@@ -253,16 +253,14 @@ const SNView: React.FC<Props> = ({ xml, forcedWidth, editMode = '', editCallback
         let numberOfCredits = findCredits();
         console.log(creditsDisplay, numberOfCredits);
 
-        // get key signature
+        // get key signature    2021 06 10 - if no mode specified then display KS as  N Major / m minor
         let keyFifths = score.tracks[0].keySignatures[0].fifths;
         // The values for fifths range from -7 for Cb Major to +7 for C# Major.  So adjust index to names array by 7 to start at array offset 0
-        let keySignatureDisplayed = keySignatureNamesArrayMajor[keyFifths + 7] + "*";  // if no mode, default to major and indicate that with an asterisk
+        let keySignatureDisplayed = keySignatureNamesArrayMajor[keyFifths + 7] || " /" || keySignatureNamesArrayMinor[keyFifths - 7];  // if no mode, default to major / minor
         let scoreMode: any = score.tracks[0].keySignatures[0].mode;
         if (scoreMode === 'major') keySignatureDisplayed = keySignatureNamesArrayMajor[keyFifths + 7];
         else if (scoreMode === 'minor') keySignatureDisplayed = keySignatureNamesArrayMinor[keyFifths + 7];
-        else if (title !== 'no title specified')
-            if (title.includes(' minor') || title.includes(' Minor') || title.includes(' MINOR'))
-                keySignatureDisplayed = keySignatureNamesArrayMinor[keyFifths + 7] + "*";  // if no mode specified and "minor" is in the title, assume minor mode
+        
 
         let minNote: Record<StaffType, number> = {
             treble: 128,
