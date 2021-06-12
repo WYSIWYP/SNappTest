@@ -256,7 +256,7 @@ const SNView: React.FC<Props> = ({ xml, forcedWidth, editMode = '', editCallback
         // get key signature    2021 06 10 - if no mode specified then display KS as  N Major / m minor
         let keyFifths = score.tracks[0].keySignatures[0].fifths;
         // The values for fifths range from -7 for Cb Major to +7 for C# Major.  So adjust index to names array by 7 to start at array offset 0
-        let keySignatureDisplayed = keySignatureNamesArrayMajor[keyFifths + 7] || " /" || keySignatureNamesArrayMinor[keyFifths + 7];  // if no mode, default to major / minor
+        let keySignatureDisplayed = keySignatureNamesArrayMajor[keyFifths + 7] + " /" + keySignatureNamesArrayMinor[keyFifths + 7];  // if no mode, default to major / minor
         let scoreMode: any = score.tracks[0].keySignatures[0].mode;
         if (scoreMode === 'major') keySignatureDisplayed = keySignatureNamesArrayMajor[keyFifths + 7];
         else if (scoreMode === 'minor') keySignatureDisplayed = keySignatureNamesArrayMinor[keyFifths + 7];
