@@ -226,35 +226,6 @@ const SNView: React.FC<Props> = ({ xml, forcedWidth, editMode = '', editCallback
         if (title === undefined) title = 'no title specified';
           // console.log(title);
 
-        let findCredits = (): number => {
-            // retrieve all credits but skip any that match the previously found title
-            // console.log(creditsDisplay);
-            let creditNum = 0;
-            creditsDisplay = ['', '', '', '', ''];
-            if (xml.credits !== undefined) {
-                let credits = xml.credits.filter(x => x.creditWords !== undefined && x.creditWords.length > 0).map(x => x.creditWords);
-                credits.forEach(credit => {
-                    credit.forEach(words => {
-                        creditsDisplay[creditNum] = words.words;
-                        //}
-                        // console.log(creditNum, creditsDisplay, words, title);
-                        if (creditsDisplay[creditNum] === title) {
-                            creditsDisplay[creditNum] = '';
-                        }
-                        else {
-                            creditNum = creditNum + 1;
-                        };
-                        // console.log(title, creditNum, creditsDisplay);
-                    });
-                });
-
-            }
-            return creditNum;
-        };
-
-        // let numberOfCredits = findCredits();
-        // console.log(creditsDisplay, numberOfCredits);
-
         // get key signature     21 June 2021  modified logic (don't examine title for "minor" anymore; display both Major/minor if mode parm not specified)
         let keyFifths = score.tracks[0].keySignatures[0].fifths;
         // The values for fifths range from -7 for Cb Major to +7 for C# Major.  So adjust index to names array by 7 to start at array offset 0
